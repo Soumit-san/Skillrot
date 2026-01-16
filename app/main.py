@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from app.core.config import settings
-from app.api import health, users, skills ,skill_history,analysis
+from app.api import health, users, skills ,skill_history,analysis, recommendations
+
 from app.core.logging import setup_logging
 from app.core.exceptions import global_exception_handler
 from fastapi import Request
@@ -25,6 +26,7 @@ app.include_router(users.router)
 app.include_router(skills.router)
 app.include_router(skill_history.router)
 app.include_router(analysis.router)
+app.include_router(recommendations.router)
 
 @app.on_event("startup")
 def startup_event():
